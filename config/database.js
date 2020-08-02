@@ -2,10 +2,9 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const mongoose = require('mongoose');
-console.log('THis is some random text',process.env.MONGOURL);
 mongoose.connect(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if(err)
-        console.log('Error:', err)
+        console.error(err)
 });
 const conn = mongoose.connection;
 conn.on('connected', function() {
