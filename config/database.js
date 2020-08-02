@@ -2,10 +2,10 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const mongoose = require('mongoose');
-setTimeout(mongoose.connect(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+await mongoose.connect(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if(err)
-        console.log('Unable to connect Mongo!!',err);
-}), 60000);
+        console.log('Unable to connect Mongo!!',err)
+});
 const conn = mongoose.connection;
 conn.on('connected', function() {
     console.log('database is connected successfully');
