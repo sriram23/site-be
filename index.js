@@ -6,7 +6,7 @@ const app = express();
 const Blog = require('./models/blogModel')
 dotenv.config()
 app.use(cors({
-    origin: ['http://localhost:8080','https://sriram23.github.io/site']
+    origin: ['https://sriram23.github.io/site']
 }));
 
 const bodyParser = require('body-parser');
