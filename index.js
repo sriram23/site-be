@@ -38,9 +38,8 @@ app.post('/create', (req, res) => {
     });
 });
 
-app.get('/fetch-blog', (req, res) => {
-    res.send('Fetching your query...');
-    Blog.find({},(err,data) => {
+app.get('/fetch-blog', async (req, res) => {
+    await Blog.find({},(err,data) => {
         if(err)
             console.error(err);
         else 
