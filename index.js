@@ -5,9 +5,8 @@ const moment = require('moment')
 const app = express();
 const Blog = require('./models/blogModel')
 dotenv.config()
-app.use(cors({
-    origin: ['https://sriram23.github.io/site']
-}));
+
+app.use(cors());
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
