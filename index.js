@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 const database = require('./config/database')
 
-app.listen(8000, () => console.log('App is listening port: 8000'));
+app.listen(8000, () => console.log('App is listening port: 8000', process.env.MONGOURL));
 app.get('/', (req, res) => {
     res.send('Hello World from Sriram!');
 });
