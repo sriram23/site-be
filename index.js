@@ -38,7 +38,12 @@ app.post('/create', (req, res) => {
 });
 
 app.get('/fetch-blog/:skip/:limit', async (req, res) => {
-    await Blog.find({}).sort({createdAt: -1}).skip(Number(req.params.skip)).limit(Number(req.params.limit)).exec((err,data) => {
+    const skip = Number(req.params.skip*req.params.limit);
+    const limit = Number(req.params.limit);
+    await Blog.find({}).sort({createdAt: -1})
+    .skip(skip)
+    .limit(limit)
+    .exec((err,data) => {
         if(err)
             console.error(err);
         else 
