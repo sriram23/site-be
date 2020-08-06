@@ -50,3 +50,12 @@ app.get('/fetch-blog/:skip/:limit', async (req, res) => {
             res.json(data);
     });
 });
+
+app.get('/blog/:blogId', async (req, res) => {
+    await Blog.find({_id: req.params.blogId}, (err, data) => {
+        if(err)
+            console.error(err);
+        else
+            res.json(data);
+    })
+})
