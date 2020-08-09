@@ -36,6 +36,13 @@ app.post('/create', (req, res) => {
     });
 });
 
+app.get('/fetch-all', async (req, res) => {
+    await Blog.find({}, (err, data) => {
+        if(err) console.error(err);
+        else res.json(data);
+    });
+})
+
 app.get('/fetch-blog/:skip/:limit', async (req, res) => {
     const skip = Number(req.params.skip*req.params.limit);
     const limit = Number(req.params.limit);
