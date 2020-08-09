@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
 });
 
 app.post('/create', (req, res) => {
-    console.log('Request: ',req.body);
     const request = req.body;
     request.createdAt = moment();
     request.updatedAt = moment();
@@ -57,5 +56,21 @@ app.get('/blog/:blogId', async (req, res) => {
             console.error(err);
         else
             res.json(data);
+    })
+})
+
+app.post('/update', async (req, res) => {
+    newData = {
+        _id: req.body._id,
+        title: req.body.title,
+        content: req.body.content,
+        updatedAt: moment(),
+    }
+    query = {_id: req.body._id}
+    await Blog.findOneAndUpdate(query, newData, (err, data) => {
+        if(err) console.error(err);
+        else{
+            res.send(data);
+        }
     })
 })
